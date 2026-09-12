@@ -1,21 +1,22 @@
-import Link from "next/link";
 import { SupportForm } from "@/components/support-form";
-import { CategoryCard } from "@/components/category-card";
-import { Icon } from "@/components/icon";
-import { uiGuidelines } from "@/config/brand-context";
 
 export default function HomePage() {
-  return <main>
-    <section className="grain border-b border-[#dedfd9]">
-      <div className="mx-auto grid max-w-[1280px] gap-10 px-5 pb-16 pt-16 lg:grid-cols-[1.05fr_.95fr] lg:items-end lg:px-8 lg:pb-24 lg:pt-24">
-        <div className="rise max-w-2xl"><p className="eyebrow">Support, made human</p><h1 className="mt-5 font-display text-5xl font-bold leading-[.98] tracking-[-.055em] sm:text-7xl">How can we<br /><span className="text-[#6d883f]">help you today?</span></h1><p className="mt-7 max-w-lg text-lg leading-8 text-[#656b61]">Get clear, considered answers about your orders, products, shipping, returns, payments, and account.</p><div className="mt-8 flex flex-wrap gap-3"><a href="#support" className="focus-ring inline-flex min-h-12 items-center gap-2 rounded-full bg-[#171916] px-6 text-sm font-bold text-white hover:bg-[#3f4936]">Ask a question <Icon name="arrow" size={16} /></a><Link href="/dashboard" className="focus-ring inline-flex min-h-12 items-center rounded-full border border-[#cdd4c7] px-6 text-sm font-bold hover:bg-white">View my requests</Link></div></div>
-        <div className="relative hidden min-h-[340px] overflow-hidden rounded-[2rem] bg-[#dfe8d8] lg:block"><div className="absolute -right-14 -top-14 h-64 w-64 rounded-full border-[35px] border-[#c6d7bd]" /><div className="absolute bottom-[-85px] left-[-35px] h-64 w-64 rounded-full bg-[#c6d7bd]" /><div className="absolute inset-0 flex items-center justify-center"><div className="relative h-56 w-56 rotate-[-27deg]"><div className="absolute left-14 top-0 h-40 w-28 rounded-[48%] border-[9px] border-[#263024] bg-transparent" /><div className="absolute bottom-1 left-[72px] h-24 w-3 rotate-[30deg] rounded-full bg-[#263024]" /><div className="absolute left-[63px] top-[35px] h-24 w-12 opacity-40" style={{ backgroundImage: "repeating-linear-gradient(70deg, transparent 0 7px, #263024 8px 9px), repeating-linear-gradient(160deg, transparent 0 7px, #263024 8px 9px)" }} /></div></div><span className="absolute bottom-5 left-6 rounded-full bg-[#f6f7f2] px-3 py-1.5 text-xs font-semibold">Play more. Worry less.</span></div>
+  return <main className="min-h-[calc(100vh-73px)] px-4 py-6 sm:px-6 sm:py-10">
+    <section className="mx-auto max-w-[760px]">
+      <div className="mb-7 flex items-center gap-3 px-2">
+        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#dfead9] text-sm font-bold text-[#4f6845]">TR</div>
+        <div><p className="font-semibold">The Racket Lifestyle team</p><p className="mt-0.5 text-sm text-[#70746d]">Usually replies in a moment</p></div>
+        <span className="ml-auto hidden rounded-full bg-[#e8f2e2] px-3 py-1 text-xs font-semibold text-[#527149] sm:block">Online now</span>
       </div>
+      <div className="overflow-hidden rounded-[2rem] border border-[#dedfd9] bg-[#fbfcfa] shadow-[0_18px_60px_rgba(24,32,20,.06)]">
+        <div className="border-b border-[#e6e9e2] px-5 py-7 text-center sm:px-10">
+          <p className="eyebrow">Customer support</p>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-[-.05em] sm:text-5xl">How can we help?</h1>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#70746d]">Send us a message about your order, products, shipping, returns, payments, or account. We’re ready when you are.</p>
+        </div>
+        <div className="p-3 sm:p-6"><SupportForm /></div>
+      </div>
+      <p className="mt-5 text-center text-xs text-[#858a80]">Please keep passwords and payment details out of messages.</p>
     </section>
-    <section id="support" className="mx-auto grid max-w-[1280px] gap-10 px-5 py-12 lg:grid-cols-[1fr_1.25fr] lg:px-8 lg:py-20">
-      <div className="lg:sticky lg:top-28 lg:self-start"><p className="eyebrow">A little context goes a long way</p><h2 className="mt-3 max-w-md text-3xl font-semibold tracking-tight sm:text-4xl">Tell us what you need. We’ll take it from there.</h2><p className="mt-5 max-w-md text-sm leading-7 text-[#70746d]">Our support assistant uses The Racket Lifestyle knowledge base to give grounded guidance. It will never invent order, product, or payment details.</p><div className="mt-8 space-y-4 border-t border-[#dedfd9] pt-6 text-sm text-[#50564d]"><div className="flex gap-3"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#d9f94a] font-bold">1</span><span>Share the details that matter — never passwords or payment credentials.</span></div><div className="flex gap-3"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#d9f94a] font-bold">2</span><span>Get a clear response with a safe next step and priority.</span></div><div className="flex gap-3"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#d9f94a] font-bold">3</span><span>Keep track of the conversation from your request dashboard.</span></div></div></div>
-      <SupportForm />
-    </section>
-    <section id="sports" className="border-t border-[#dedfd9] bg-white"><div className="mx-auto max-w-[1280px] px-5 py-14 lg:px-8 lg:py-20"><div className="flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow">Find your way in</p><h2 className="mt-3 text-3xl font-semibold tracking-tight">What can we help with?</h2></div><p className="max-w-sm text-sm leading-6 text-[#70746d]">Pick a topic to get started, or ask us anything above.</p></div><div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{uiGuidelines.categories.map((item) => <CategoryCard key={item.key} category={item.key as never} label={item.label} description={item.description} />)}</div></div></section>
   </main>;
 }

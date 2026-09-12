@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Support | The Racket Lifestyle",
-  description: "Friendly, grounded support for your racket-sports lifestyle."
+  description: "Friendly support for your racket-sports lifestyle."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
