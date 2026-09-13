@@ -28,6 +28,13 @@ export type SupportRequest = {
   createdAt: string;
   updatedAt: string;
   resolvedAt?: string;
+  messages?: ConversationMessage[];
+};
+
+export type ConversationMessage = {
+  role: "customer" | "team";
+  content: string;
+  createdAt: string;
 };
 
 export type CreateSupportInput = {
@@ -37,6 +44,10 @@ export type CreateSupportInput = {
   complaint: string;
   category?: Category;
   orderNumber?: string;
+};
+
+export type ConversationInput = {
+  message: string;
 };
 
 export type AiSupportResponse = {

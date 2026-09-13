@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     const saved = await createRequest(parsed.data, owner);
     let response: NextResponse;
     try {
-      const ai = await generateSupportResponse(parsed.data);
+      const ai = await generateSupportResponse(parsed.data, saved.messages);
       const { updateWithAi } = await import("@/lib/store");
       const completed = await updateWithAi(saved.id, owner, ai.response, ai.latencyMs, ai.model);
       response = NextResponse.json({ request: completed ?? saved });

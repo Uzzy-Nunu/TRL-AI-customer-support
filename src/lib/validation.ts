@@ -15,13 +15,21 @@ export const createSupportSchema = z.object({
   }
 });
 
+export const conversationMessageSchema = z.object({
+  message: z.string().trim().min(1, "Write a message first.").max(5000, "Message must be 5,000 characters or fewer.")
+}).superRefine((value, ctx) => {
+  if (/(password|passcode|cvv|cvc|pin|one[- ]?time password|otp|full card|card number)/i.test(value.message)) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["message"], message: "For your security, do not include passwords, card numbers, CVV, PINs, or one-time passwords." });
+  }
+});
+
 export const aiResponseSchema = z.object({
   message: z.string().trim().min(1).max(4000),
-  category: z.enum(categories),
-  urgency: z.enum(urgencies),
-  summary: z.string().trim().min(1).max(300),
-  needsEscalation: z.boolean(),
-  safeNextStep: z.string().trim().min(1).max(500)
+  category: z.enum(categories).default("OTHER"),
+  urgency: z.enum(urgencies).default("NORMAL"),
+  summary: z.string().trim().max(300).default(""),
+  needsEscalation: z.boolean().default(false),
+  safeNextStep: z.string().trim().max(500).default("")
 }).superRefine((value, ctx) => {
   if (/(password|passcode|cvv|cvc|pin|one[- ]?time password|otp|full card|card number)/i.test(value.message)) {
     ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["message"], message: "Response contains a sensitive credential request." });

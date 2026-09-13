@@ -10,7 +10,7 @@ export async function POST(_: Request, { params }: { params: { id: string } }) {
   const request = await getRequest(params.id, owner);
   if (!request) return NextResponse.json({ error: { code: "NOT_FOUND", message: "Request not found." } }, { status: 404 });
   try {
-    const ai = await generateSupportResponse({ name: request.name, email: request.email, subject: request.subject, complaint: request.complaint, category: request.customerCategory, orderNumber: request.orderReference });
+    const ai = await generateSupportResponse({ name: request.name, email: request.email, subject: request.subject, complaint: request.complaint, category: request.customerCategory, orderNumber: request.orderReference }, request.messages);
     return NextResponse.json({ request: await updateWithAi(request.id, owner, ai.response, ai.latencyMs, ai.model) });
   } catch (error) {
     const appError = error instanceof AppError ? error : new AppError("AI_UNAVAILABLE", "We couldn't get an answer right now. Please try again.", true);
